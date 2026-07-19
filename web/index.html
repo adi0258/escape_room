@@ -7,7 +7,9 @@
     <style>
       html, body, #root { height: 100%; margin: 0; padding: 0; background: #0a0a12; }
       #root { display: flex; justify-content: center; }
-      #root > div { width: 100%; max-width: 480px; height: 100%; }
+      /* portrait game column: on desktop, scale with viewport height instead of
+         a fixed phone width so the game fills the screen at 100% zoom */
+      #root > div { width: 100%; max-width: min(720px, calc(100vh * 0.72)); height: 100%; }
     </style>
   </head>
   <body>
