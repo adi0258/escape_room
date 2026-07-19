@@ -129,7 +129,15 @@ const styles = StyleSheet.create({
     right: 0,
     backgroundColor: 'rgba(6,6,14,0.68)',
   },
-  content: { flexGrow: 1, padding: 18, paddingBottom: 40, justifyContent: 'center' },
+  content: {
+    flexGrow: 1,
+    padding: 18,
+    paddingBottom: 40,
+    justifyContent: 'center',
+    width: '100%',
+    maxWidth: 620,
+    alignSelf: 'center',
+  },
   form: {
     backgroundColor: '#e9ddba',
     borderRadius: 4,

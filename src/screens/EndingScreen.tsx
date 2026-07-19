@@ -70,7 +70,15 @@ const styles = StyleSheet.create({
     right: 0,
     backgroundColor: 'rgba(6,6,16,0.82)',
   },
-  content: { flexGrow: 1, padding: 26, gap: 16, justifyContent: 'center' },
+  content: {
+    flexGrow: 1,
+    padding: 26,
+    gap: 16,
+    justifyContent: 'center',
+    width: '100%',
+    maxWidth: 720,
+    alignSelf: 'center',
+  },
   bigEmoji: { fontSize: 52, textAlign: 'center' },
   ghostImg: {
     alignSelf: 'center',

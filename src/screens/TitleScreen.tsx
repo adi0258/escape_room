@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Image, Pressable, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Narrator from '../components/Narrator';
@@ -35,6 +35,8 @@ const MENU = [
 export default function TitleScreen() {
   const goTo = useGameStore(s => s.goTo);
   const narrate = useGameStore(s => s.narrate);
+  // fit the CRT artwork inside the window on any aspect ratio (widescreen included)
+  const [frame, setFrame] = useState({ w: 0, h: 0 });
 
   const press = (item: (typeof MENU)[number]) => {
     sound.click();
@@ -49,8 +51,14 @@ export default function TitleScreen() {
 
   return (
     <SafeAreaView style={styles.safe}>
-      <View style={styles.center}>
-        <View style={styles.frame}>
+      <View
+        style={styles.center}
+        onLayout={e => {
+          const { width, height } = e.nativeEvent.layout;
+          const w = Math.min(width, height * IMAGE_ASPECT);
+          setFrame({ w, h: w / IMAGE_ASPECT });
+        }}>
+        <View style={[styles.frame, frame.w > 0 && { width: frame.w, height: frame.h }]}>
           <Image source={IMG.title} style={styles.img} resizeMode="contain" />
           {MENU.map(item => (
             <Pressable
@@ -68,11 +76,10 @@ export default function TitleScreen() {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: '#0a0806' },
-  center: { flex: 1, justifyContent: 'center' },
+  center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   frame: {
     width: '100%',
     aspectRatio: IMAGE_ASPECT,
-    alignSelf: 'center',
   },
   img: { width: '100%', height: '100%' },
   menuHit: {

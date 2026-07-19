@@ -67,6 +67,14 @@ const styles = StyleSheet.create({
     right: 0,
     backgroundColor: 'rgba(6,6,16,0.72)',
   },
-  content: { flex: 1, padding: 26, gap: 16, justifyContent: 'center' },
+  content: {
+    flex: 1,
+    padding: 26,
+    gap: 16,
+    justifyContent: 'center',
+    width: '100%',
+    maxWidth: 720,
+    alignSelf: 'center',
+  },
   emphasis: { color: colors.accentGold, fontWeight: '700' },
 });

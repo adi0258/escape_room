@@ -28,6 +28,13 @@ export default function StageLayout({ children, scroll = true }: Props) {
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bgDarkest },
-  scrollContent: { flexGrow: 1, padding: 20, gap: 16 },
+  scrollContent: {
+    flexGrow: 1,
+    padding: 20,
+    gap: 16,
+    width: '100%',
+    maxWidth: 780,
+    alignSelf: 'center',
+  },
   flexContent: { flex: 1 },
 });
